@@ -10,6 +10,10 @@ class User(models.Model):
     patronymic = models.CharField(max_length=100)
     phone = models.CharField(max_length=20)
 
+    def __str__(self):
+        """Method for representation"""
+        return f'{self.name} {self.patronymic} {self.surname}'
+
 
 class Coord(models.Model):
     """Model containing coordinates"""
@@ -17,17 +21,29 @@ class Coord(models.Model):
     longitude = models.FloatField()
     height = models.IntegerField()
 
+    def __str__(self):
+        """Method for representation"""
+        return f"Latitude: {self.latitude}, Longitude: {self.longitude}, Height: {self.height}"
+
 
 class Level(models.Model):
     """Model containing level difficulty"""
     season = models.CharField(max_length=50, choices=SEASONS)
     difficulty = models.CharField(max_length=50, choices=LEVEL)
 
+    def __str__(self):
+        """Method for representation"""
+        return f'{self.get_difficulty_display()} in {self.season}'
+
 
 class Image(models.Model):
     """Model containing image data """
     data = models.ImageField()
     title = models.CharField(max_length=100)
+
+    def __str__(self):
+        """Method for representation"""
+        return self.title
 
 
 class Camping(models.Model):
@@ -41,9 +57,16 @@ class Camping(models.Model):
     connect = models.CharField(max_length=100)
     add_time = models.DateTimeField(auto_now_add=True, null=True)
     status = models.CharField(max_length=2, choices=STATUS, default=new)
+    def __str__(self):
+        """Method for representation"""
+        return f"Camping: {self.camping.title} - {self.camping.other_titles} "
 
 
 class CampingImage(models.Model):
     """Model for linking an image to a pereval"""
     camping = models.ForeignKey('Camping', on_delete=models.CASCADE)
     image = models.ForeignKey('Image', on_delete=models.CASCADE)
+
+    def __str__(self):
+        """Method for representation"""
+        return f"Camping: {self.camping.title} - {self.camping.other_titles} . Image: {self.image.title}"
