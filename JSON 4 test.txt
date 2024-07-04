@@ -1,0 +1,22 @@
+{
+    "user": {
+        "email": "example@example.com",
+        "surname": "Troffimoff",
+        "name": "Andrey",
+        "patronymic": "Dmitrievic",
+        "phone": "1234567890"
+    },
+    "coord": {
+        "latitude": 40.7128,
+        "longitude": -74.0060,
+        "height": 100
+    },
+    "level": {
+        "season": "SU",
+        "difficulty": "A1"
+    },
+    "beauty_title": " Some Beautiful Camping Spot",
+    "title": "Some Camping Title",
+    "other_titles": "Some Other Camping Titles",
+    "connect": "Some Info"
+}
